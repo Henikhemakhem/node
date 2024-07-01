@@ -288,7 +288,11 @@ router.get("/facture", async (req, res) => {
 
 
 app.use(router);
-  const PORT=process.env.PORT || 3001
-  app.listen(PORT, () => {
-    console.log("Server is running on port 3001");
-  });
+
+// Utiliser process.env.PORT pour le déploiement sur Render ou autre service cloud
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  // Affiche le port sur lequel le serveur écoute
+  console.log(`Server is running on port ${PORT}`);
+});
