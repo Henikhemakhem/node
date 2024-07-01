@@ -1,24 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const app = express();
-
-// Middleware pour gérer les requêtes CORS et les données JSON
-app.use(cors());
-app.use(express.json());
-
-// Connexion à MongoDB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/ang_proj", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
-
-// Importation des modèles
+const router = express.Router();
 const Fruit = require('./Models/Fruit');
 const Legume = require('./Models/Legume');
 const Employee = require('./Models/Employee');
+//facture
 const Facture = require('./Models/Facture');
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect("mongodb://127.0.0.1:27017/ang_proj");
 
 // Routes pour les fruits
 
